@@ -46,4 +46,12 @@ class VenteController extends Controller
         return view('ventes.list', ['ventes'=>$ventes]);
     }
 
+    public function venteByProduits()
+    {
+        $ventesByProduit = DB::select(DB::raw("SELECT p.idpro,p.libelle,sum(v.qtevente) as total 
+            FROM produits p, ventes v WHERE v.idpro = p.idpro group by p.idpro, p.libelle, p.idpro"));
+
+        return view('ventes.charts', ['ventesByProduit'=>$ventesByProduit]);
+    }
+
 }

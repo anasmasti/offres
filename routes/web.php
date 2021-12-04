@@ -51,4 +51,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
 Route::post('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
 Route::get('/ventes',[App\Http\Controllers\VenteController::class,'list'])->name('ventes.list');
+Route::get('/ventes/charts',[App\Http\Controllers\VenteController::class,'venteByProduits'])->name('ventes.charts');
  
