@@ -42,6 +42,13 @@ Route::get('/clients/edit/{idcli}', 'App\Http\Controllers\ClientsController@upda
 Route::post('/clients/edit/{idcli}', 'App\Http\Controllers\ClientsController@update')->name('client.update');
 
 Route::delete('/clients/delete/{idcli}', 'App\Http\Controllers\ClientsController@destroy')->name('client.destroy');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Vente routes
+Route::get('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
+Route::post('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
+Route::get('/ventes',[App\Http\Controllers\VenteController::class,'list'])->name('ventes.list');
+ 

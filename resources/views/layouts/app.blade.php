@@ -53,6 +53,12 @@
                           <li class="nav-item">
                             <a class="nav-link active" href="/client/add">Ajouter un client</a>
                           </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" href="/ventes">List des ventes</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link active" href="/ventes/vendre">Vendre</a>
+                          </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
