@@ -54,12 +54,20 @@
             @endif
         </div>
 
-
+        <div class="mt-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="summernote" cols="30" rows="10"></textarea>
+        </div>
         
         <div class="mt-5">
             <button class="btn btn-primary" type="submit">Ajouter</button>
             <a class="btn btn-secondary" href="/produits">Retourner</a>
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+      </script>
 </div>    
 @endsection

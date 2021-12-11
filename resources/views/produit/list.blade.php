@@ -18,6 +18,7 @@
                     <th>Libelle</th>
                     <th>Marque</th>
                     <th>Prix</th>
+                    <th>QR</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -30,6 +31,9 @@
                     <td>{{ $pro->libelle }}</td>
                     <td>{{ $pro->marque }}</td>
                     <td>{{ $pro->prix }}MAD</td>
+                    <td>
+                        {{ QrCode::size(50)->generate($pro->libelle) }}
+                    </td>
                     <td class="btn-group" role="group">
                         <a class="btn btn-light" href="/produits/{{ $pro->idpro }}">Detail</a>
                         <a class="btn btn-warning" href="/produits/edit/{{ $pro->idpro }}">Modifier</a>
