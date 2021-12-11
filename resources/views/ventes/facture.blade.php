@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <div class="container">
         <div class="card">
             <div class="card-header">
                 Facture
@@ -29,43 +28,44 @@
                         <div>Phone: +{ (Sfactures [0]->tel}I</div>
                     </div>    
                 </div>
-            <h3>Liste Commande</n3>
-            <br />
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Date de vente</th>
-                        <th>Qte de vente</th>
-                        <th>Prix de vente</th>
-                        <th>Nom client</th>
-                        <th>Prénom client</th>
-                        <th>Produit</th>
-                        <th>Marque</th>
-                        <th>Prix produit</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($factures as $ligne)
-                        <tr>
-                            <td>{{$ligne->id}}</td>
-                            <td>{{$ligne->datevente}}</td>
-                            <td>{{$ligne->qtevente}}</td>
-                            <td>{{$ligne->prixVente}} MAD</td>
-                            <td>{{$ligne->nom}}</td>
-                            <td>{{$ligne->prenom}}</td>
-                            <td>{{$ligne->libelle}}</td>
-                            <td>{{$ligne->marque}}</td>
-                            <td>{{$ligne->prix}} MAD</td>
-                            <td class="bg-warning">{{$ligne->prixVente * $ligne->qtevente}} MAD</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <a class="btn btn-info" href="/ventes/imprimerfacture/{{$factures[0]->idcli}}">Imprimer facture</a>
+                <div class="row">
+                    <h3>Liste Commande</n3>
+                    <br />         
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date de vente</th>
+                                <th>Qte de vente</th>
+                                <th>Prix de vente</th>
+                                <th>Nom client</th>
+                                <th>Prénom client</th>
+                                <th>Produit</th>
+                                <th>Marque</th>
+                                <th>Prix produit</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($factures as $ligne)
+                                <tr>
+                                    <td>{{$ligne->id}}</td>
+                                    <td>{{$ligne->datevente}}</td>
+                                    <td>{{$ligne->qtevente}}</td>
+                                    <td>{{$ligne->prixVente}} MAD</td>
+                                    <td>{{$ligne->nom}}</td>
+                                    <td>{{$ligne->prenom}}</td>
+                                    <td>{{$ligne->libelle}}</td>
+                                    <td>{{$ligne->marque}}</td>
+                                    <td>{{$ligne->prix}} MAD</td>
+                                    <td class="bg-warning">{{$ligne->prixVente * $ligne->qtevente}} MAD</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            <a class="btn btn-primary" href="/ventes/imprimerfacture/{{$factures[0]->idcli}}">Imprimer facture</a>
             </div>   
-        </div>   
-    </div>   
+        </div> 
 </div>   
 @endsection

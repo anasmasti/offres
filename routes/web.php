@@ -54,3 +54,4 @@ Route::get('/ventes',[App\Http\Controllers\VenteController::class,'list'])->name
 Route::get('/ventes/charts',[App\Http\Controllers\VenteController::class,'venteByProduits'])->name('ventes.charts');
 Route::get('/ventes/facture/{idcli}',[App\Http\Controllers\VenteController::class,'facture'])->name('ventes.facture');
 Route::get('/ventes/imprimerfacture/{idcli}',[App\Http\Controllers\VenteController::class,'imprimerfacture'])->name('ventes.imprimerfacture');
+Route::get('/sitemap.xml',[App\Http\Controllers\VenteController::class,'afficherSitemap'])->name('ventes.sitemap');

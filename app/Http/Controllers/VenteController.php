@@ -76,7 +76,13 @@ class VenteController extends Controller
             ->where('ventes.idcli', $idcli)
             ->get();
 
-        $pdf = PDF::loadView('ventes.facture', ['factures'=>$factures]);
+        $pdf = PDF::loadView('ventes.facture', ['factures'=>$factures])->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download('facture.pdf');
+    }
+
+    public function afficherSitemap()
+    {
+        $produits = Produit::latest()->get();
+        return view('sitemaps.sitemap1', ['produits'=>$produits]);
     }
 }

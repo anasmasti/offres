@@ -40,11 +40,11 @@
                     <td>{{ $v->prenom }}</td>
                     <td>{{ $v->libelle }}</td>
                     <td>{{ $v->marque }}</td>
-                    <td>{{ $v->prix }}</td>
-                    <td class="bg-warning">{{ $v->prixVente * $v->qtevente }}</td>
+                    <td>{{ $v->prix }} MAD</td>
+                    <td class="bg-warning">{{ $v->prixVente * $v->qtevente }} MAD</td>
                     <td>
-                        <a href="/ventes/facture/{{$v->idcli}}">
-                            Facture
+                        <a class="btn btn-light" href="/ventes/facture/{{$v->idcli}}">
+                            Voir
                         </a>
                     </td>
                 </tr>
