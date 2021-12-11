@@ -52,4 +52,5 @@ Route::get('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre
 Route::post('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
 Route::get('/ventes',[App\Http\Controllers\VenteController::class,'list'])->name('ventes.list');
 Route::get('/ventes/charts',[App\Http\Controllers\VenteController::class,'venteByProduits'])->name('ventes.charts');
- 
+Route::get('/ventes/facture/{idcli}',[App\Http\Controllers\VenteController::class,'facture'])->name('ventes.facture');
+Route::get('/ventes/imprimerfacture/{idcli}',[App\Http\Controllers\VenteController::class,'imprimerfacture'])->name('ventes.imprimerfacture');

@@ -7,6 +7,7 @@ use App\Models\Produit;
 use App\Models\Client;
 use App\Models\Vente;
 use Auth;
+use PDF;
 use Illuminate\Support\Facades\DB;
 
 class VenteController extends Controller
@@ -54,4 +55,28 @@ class VenteController extends Controller
         return view('ventes.charts', ['ventesByProduit'=>$ventesByProduit]);
     }
 
+    public function facture($idcli)
+    {
+        $factures = DB::table('ventes')
+            ->join('produits', 'ventes.idpro', '=', 'produits.idpro')
+            ->join('clients', 'ventes.idcli', '=', 'clients.idcli')
+            ->select('ventes.*', 'produits.*', 'clients.*')
+            ->where('ventes.idcli', $idcli)
+            ->get();
+
+        return view('ventes.facture', ['factures'=>$factures]);
+    }
+
+    public function imprimerfacture($idcli)
+    {
+        $factures = DB::table('ventes')
+            ->join('produits', 'ventes.idpro', '=', 'produits.idpro')
+            ->join('clients', 'ventes.idcli', '=', 'clients.idcli')
+            ->select('ventes.*', 'produits.*', 'clients.*')
+            ->where('ventes.idcli', $idcli)
+            ->get();
+
+        $pdf = PDF::loadView('ventes.facture', ['factures'=>$factures]);
+        return $pdf->download('facture.pdf');
+    }
 }

@@ -20,6 +20,7 @@ class CreateProduitsTable extends Migration
             $table->decimal ('prix', 5)->nullable()->default(0.00);
             $table->float( 'qteStock', 5)->nullable();
             $table->string('image')->nullable();
+            $table->string('description', 5000)->nullable();
             $table->timestamps();
         });
     }

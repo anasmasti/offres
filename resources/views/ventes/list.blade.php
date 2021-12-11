@@ -24,6 +24,7 @@
                     <th>Marque</th>
                     <th>Prix produit</th>
                     <th>Total</th>
+                    <th>Facture</th>
                 </tr>
             </thead>
 
@@ -40,7 +41,12 @@
                     <td>{{ $v->libelle }}</td>
                     <td>{{ $v->marque }}</td>
                     <td>{{ $v->prix }}</td>
-                    <td>{{ $v->prixVente * $v->qtevente }}</td>
+                    <td class="bg-warning">{{ $v->prixVente * $v->qtevente }}</td>
+                    <td>
+                        <a href="/ventes/facture/{{$v->idcli}}">
+                            Facture
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

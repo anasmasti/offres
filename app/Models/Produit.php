@@ -17,5 +17,6 @@ class Produit extends Model
         'prix',
         'qteStock',
         'image',
+        'description',  
     ];
 }
