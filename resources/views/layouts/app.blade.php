@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Find Job</title>
+    <title>FindJob - Recherche d'emploi</title>
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -19,7 +19,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 </head>
@@ -29,7 +34,7 @@
             <div class="w-100 d-flex justify-content-around">
                 <div class="ms-4">
                     <a class="navbar-brand" href="{{ url('/') }}">
-                    Find Job
+                    <strong>FindJob</strong>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -41,12 +46,17 @@
                     <ul class="navbar-nav w-100 d-flex justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">
+                            @if (Auth::user() == null)
+                                Accueil
+                            @endif
+                            @if (Auth::user())
                                 @if ( Auth::user()->type == 'user')
                                     Accueil
                                 @endif
                                 @if ( Auth::user()->type == 'admin')
                                     Tableau de bord
                                 @endif
+                            @endif    
                             </a>
                           </li>
                           
@@ -56,22 +66,26 @@
                                     Offres
                                     </a>
 
-                                    <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuLink">
+                                    <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuLink">
                                         <li><a class="btn btn-sm btn-white" href="/offres">Liste</a></li>
-                                        @if ( Auth::user()->type == 'admin')
-                                            <li><a class="btn btn-sm btn-white my-2" href="/offre/add">Ajouter</a></li>
+                                        @if ( Auth::user())
+                                            @if ( Auth::user()->type == 'admin')
+                                                <li><a class="btn btn-sm btn-white my-2" href="/offre/add">Ajouter</a></li>
+                                            @endif
                                         @endif
                                     </ul>
                                 </div>
                             </li>
-                            @if ( Auth::user()->type == 'admin')
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="/employees">Employé(e)s</a>
-                                </li>  
-                            
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="/postules">Postulations</a>
-                                </li>
+                            @if ( Auth::user())
+                                @if ( Auth::user()->type == 'admin')
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="/employees">Employé(e)s</a>
+                                    </li>  
+                                
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="/postules">Postulations</a>
+                                    </li>
+                                @endif
                             @endif
                     </ul>
                 </div>    
@@ -95,18 +109,23 @@
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <a class="btn btn-white dropdown-toggle text-capitalize" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {{ Auth::user()->prenom }} {{ Auth::user()->name }}
+                                        @if (Auth::user())
+                                    <strong> {{ Auth::user()->prenom }} {{ Auth::user()->name }}</strong>
+                                    @endif
                                     </a>
 
-                                    <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuLink">
+                                    <ul class="dropdown-menu border-0 p-2" aria-labelledby="dropdownMenuLink">
                                         <li><a class="btn btn-sm btn-white" href="#">Profile</a></li>
                                         <li><a class="btn btn-sm btn-white my-2" href="#">Postulations</a></li>
                                         <li>
-                                            <a class="btn btn-sm btn-danger" href="{{ route('logout') }}"
+                                            <a class="btn btn-sm btn-danger rounded-pill" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                             {{ __('Déconnecter') }}
                                             </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                         </li>
                                     </ul>
                                 </div>

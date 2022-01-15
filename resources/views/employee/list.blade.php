@@ -1,15 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-3">
-    <h1>
+<div class="p-5">
+    <h1 class="mb-5">
         Liste des employés
     </h1>
 
-    <a class="btn btn-dark" href="/employee/add">Un nouveau un employé</a>
-    <br />
-    <br />
-    <br />
 
     <table class="table">
             <thead>

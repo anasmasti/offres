@@ -12,6 +12,7 @@ class Offre extends Model
     protected $fillable = [
         'title',
         'desc',
-        'etat'
+        'etat',
+        'image_url'
     ];
 }

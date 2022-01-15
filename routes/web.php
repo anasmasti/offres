@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Main routes
+Route::get('/',[App\Http\Controllers\MAinController::class,'index'])->name('welcome');
+Route::get('/home',[App\Http\Controllers\MAinController::class,'index'])->name('welcome.home');
 
 // Route::resource('produits', App\Http\Controllers\ProduitController::class);
 
@@ -44,10 +43,6 @@ Route::post('/employees/edit/{idcli}', 'App\Http\Controllers\EmployeesController
 Route::delete('/employees/delete/{idcli}', 'App\Http\Controllers\EmployeesController@destroy')->name('employee.destroy');
 
 Auth::routes();
-
-Route::get('/home', function () {
-    return view('welcome');
-});
 
 // postuler routes
 Route::get('/postules/postuler',[App\Http\Controllers\PostulesController::class,'postuler'])->name('postule.form');

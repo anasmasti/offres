@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="p-3">
-    <h1>
-        Liste des postulations
-    </h1>
+<div class="p-5">
+    <div class="mb-5">
+        <h1>
+            Liste des postulations
+        </h1>
 
-    <a class="btn btn-dark" href="/postule/postuler">Une nouvelle postulation</a>
-    <br />
-    <br />
-    <br />
+        <a class="btn btn-sm btn-dark rounded-pill" href="/postule/postuler">Une nouvelle postulation</a>
+    </div>
 
     <table class="table">
             <thead>
