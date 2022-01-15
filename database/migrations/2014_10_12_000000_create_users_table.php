@@ -16,7 +16,11 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('prenom', 25)->nullable();
+            $table->string('tel', 25)->nullable();
+            $table->string('cv', 55)->nullable();
             $table->string('email')->unique();
+            $table->string('type')->nullable()->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

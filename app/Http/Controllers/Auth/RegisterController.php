@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -51,8 +52,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+             'prenom' => ['required', 'string', 'max:255'],
+             'tel' => ['required'],
+             'cv' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+             'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
@@ -64,10 +68,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+        $cv = $request->file('cv');
+      
+        $name =  time() . "-cv." . $cv->getClientOriginalExtension();
+        $path = 'img/employees/';
+        $cv_url = $path . $name;
+        $cv->move($path, $name);
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $data["name"],
+            'prenom' => $data["prenom"],
+            'email' => $data["email"],
+            'tel' => $data["tel"],
+            'cv' => $cv_url,
+            'email' => $data["email"],
+            'password' => Hash::make($data["password"]),
         ]);
     }
 }

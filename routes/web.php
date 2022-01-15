@@ -19,39 +19,37 @@ Route::get('/', function () {
 
 // Route::resource('produits', App\Http\Controllers\ProduitController::class);
 
-// Produit routes
-Route::get('/produits', 'App\Http\Controllers\ProduitController@index')->name('produit.index');
-Route::get('/produits/{idpro}', 'App\Http\Controllers\ProduitController@show')->name('produit.show');
+// offre routes
+Route::get('/offres', 'App\Http\Controllers\OffresController@index')->name('offre.index');
+Route::get('/offres/{idpro}', 'App\Http\Controllers\OffresController@show')->name('offre.show');
 
-Route::get('/produit/add', 'App\Http\Controllers\ProduitController@store')->name('produit.store');
-Route::post('/produit/add', 'App\Http\Controllers\ProduitController@store')->name('produit.store');
+Route::get('/offre/add', 'App\Http\Controllers\OffresController@store')->name('offre.store');
+Route::post('/offre/add', 'App\Http\Controllers\OffresController@store')->name('offre.store');
 
-Route::get('/produits/edit/{idpro}', 'App\Http\Controllers\ProduitController@update')->name('produit.update');
-Route::post('/produits/edit/{idpro}', 'App\Http\Controllers\ProduitController@update')->name('produit.update');
+Route::get('/offres/edit/{idpro}', 'App\Http\Controllers\OffresController@update')->name('offre.update');
+Route::post('/offres/edit/{idpro}', 'App\Http\Controllers\OffresController@update')->name('offre.update');
 
-Route::delete('/produits/delete/{idpro}', 'App\Http\Controllers\ProduitController@destroy')->name('produit.destroy');
+Route::delete('/offres/delete/{idpro}', 'App\Http\Controllers\OffresController@destroy')->name('offre.destroy');
 
-// Client routes
-Route::get('/clients', 'App\Http\Controllers\ClientsController@index')->name('client.index');
-Route::get('/clients/{idcli}', 'App\Http\Controllers\ClientsController@show')->name('client.show');
+// employees routes
+Route::get('/employees', 'App\Http\Controllers\EmployeesController@index')->name('employee.index');
+Route::get('/employees/{idcli}', 'App\Http\Controllers\EmployeesController@show')->name('employee.show');
 
-Route::get('/client/add', 'App\Http\Controllers\ClientsController@store')->name('client.store');
-Route::post('/client/add', 'App\Http\Controllers\ClientsController@store')->name('client.store');
+Route::get('/employee/add', 'App\Http\Controllers\EmployeesController@store')->name('employee.store');
+Route::post('/employee/add', 'App\Http\Controllers\EmployeesController@store')->name('employee.store');
 
-Route::get('/clients/edit/{idcli}', 'App\Http\Controllers\ClientsController@update')->name('client.update');
-Route::post('/clients/edit/{idcli}', 'App\Http\Controllers\ClientsController@update')->name('client.update');
+Route::get('/employees/edit/{idcli}', 'App\Http\Controllers\EmployeesController@update')->name('employee.update');
+Route::post('/employees/edit/{idcli}', 'App\Http\Controllers\EmployeesController@update')->name('employee.update');
 
-Route::delete('/clients/delete/{idcli}', 'App\Http\Controllers\ClientsController@destroy')->name('client.destroy');
+Route::delete('/employees/delete/{idcli}', 'App\Http\Controllers\EmployeesController@destroy')->name('employee.destroy');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function () {
+    return view('welcome');
+});
 
-// Vente routes
-Route::get('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
-Route::post('/ventes/vendre',[App\Http\Controllers\VenteController::class,'vendre'])->name('ventes.form');
-Route::get('/ventes',[App\Http\Controllers\VenteController::class,'list'])->name('ventes.list');
-Route::get('/ventes/charts',[App\Http\Controllers\VenteController::class,'venteByProduits'])->name('ventes.charts');
-Route::get('/ventes/facture/{idcli}',[App\Http\Controllers\VenteController::class,'facture'])->name('ventes.facture');
-Route::get('/ventes/imprimerfacture/{idcli}',[App\Http\Controllers\VenteController::class,'imprimerfacture'])->name('ventes.imprimerfacture');
-Route::get('/sitemap.xml',[App\Http\Controllers\VenteController::class,'afficherSitemap'])->name('ventes.sitemap');
+// postuler routes
+Route::get('/postules/postuler',[App\Http\Controllers\PostulesController::class,'postuler'])->name('postule.form');
+Route::post('/postules/postuler',[App\Http\Controllers\PostulesController::class,'postuler'])->name('postule.form');
+Route::get('/postules',[App\Http\Controllers\PostulesController::class,'list'])->name('postule.list');
