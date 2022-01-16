@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\User;
 use Auth;
 
 
@@ -11,14 +12,14 @@ class EmployeesController extends Controller
 {
     public function show($idemp)
     {
-        $employee = Employee::findOrFail($idemp);
+        $employee = User::findOrFail($idemp);
 
         return view('employee.show', ['employee'=>$employee]);
     }
 
     public function index()
     {
-        $employees = Employee::latest()->paginate(3);
+        $employees = User::latest()->paginate(3);
 
         return view('employee.list', ['employees'=>$employees]);
     }
@@ -61,7 +62,7 @@ class EmployeesController extends Controller
     {
         if (Auth::user()) {
             if ($request -> isMethod('POST')) {
-                $employee = Employee::findOrFail($idemp);
+                $employee = User::findOrFail($idemp);
 
                 $request->validate([
                     'nom' => 'required',
@@ -72,7 +73,7 @@ class EmployeesController extends Controller
 
                 return redirect('/employees')->with('message', 'employee modifié avec succès');
             } else {
-                $employee = Employee::findOrFail($idemp);
+                $employee = User::findOrFail($idemp);
                 return view('employee.edit', ['employee'=>$employee]);
             }
         } else {
@@ -83,7 +84,7 @@ class EmployeesController extends Controller
     public function destroy($idemp)
     {
         if (Auth::user()) {
-            $employee = Employee::findOrFail($idemp);
+            $employee = User::findOrFail($idemp);
             $employee -> delete();
 
             return redirect('/employees')->with('message', 'employee supprimé avec succès');

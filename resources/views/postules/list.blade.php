@@ -6,8 +6,6 @@
         <h1 class="fw-bold">
             Liste des postulations
         </h1>
-
-        <a class="btn btn-sm btn-dark rounded-pill" href="/postule/postuler">Une nouvelle postulation</a>
     </div>
 
     <table class="table">

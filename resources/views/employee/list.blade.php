@@ -23,16 +23,16 @@
                 @foreach ($employees as $employee)
                 <tr>
                     <td>{{ $employee->id }}</td>
-                    <td>{{ $employee->nom }}</td>
+                    <td>{{ $employee->name }}</td>
                     <td>{{ $employee->prenom }}</td>
                     <td>{{ $employee->tel }}</td>
                     <td class="btn-group" role="group">
-                        <a class="btn btn-light" href="/employees/{{ $employee->id }}">Detail</a>
-                        <a class="btn btn-warning" href="/employees/edit/{{ $employee->id }}">Modifier</a>
+                        <a class="btn btn-sm btn-light rounded-pill" href="/employees/{{ $employee->id }}">Detail</a>
+                        <a class="btn btn-sm btn-dark rounded-pill mx-2" href="/employees/edit/{{ $employee->id }}">Modifier</a>
                         <form action="/employees/delete/{{ $employee->id }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-                            <button class="btn btn-danger" type="submit">
+                            <button class="btn btn-sm btn-danger rounded-pill" type="submit">
                                 Supprimer
                             </button>
                         </form>

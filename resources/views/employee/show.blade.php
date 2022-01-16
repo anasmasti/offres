@@ -3,7 +3,7 @@
 @section('content')
 <div class="p-5">
     <h1>
-        {{ $employee->prenom }} {{ $employee->nom }}
+        {{ $employee->prenom }} {{ $employee->name }}
     </h1>
     <ul>
         <li>ID <strong>{{ $employee->id }}</strong></li>
