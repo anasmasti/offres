@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="p-5">
-    <h1 class="mb-5">
+    <h1 class="fw-bold mb-5">
         Liste des employés
     </h1>
 

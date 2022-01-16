@@ -3,7 +3,7 @@
 @section('content')
 <div class="p-5">
     <div class="mb-5">
-        <h1>
+        <h1 class="fw-bold">
             Liste des postulations
         </h1>
 

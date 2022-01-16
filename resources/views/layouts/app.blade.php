@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -110,8 +110,11 @@
                                 <div class="dropdown">
                                     <a class="btn btn-white dropdown-toggle text-capitalize" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                         @if (Auth::user())
-                                    <strong> {{ Auth::user()->prenom }} {{ Auth::user()->name }}</strong>
-                                    @endif
+                                            <strong> {{ Auth::user()->prenom }} {{ Auth::user()->name }}</strong>
+                                            @if (Auth::user()->type == "admin")
+                                              <span class="badge bg-danger ms-1">Admin</span>
+                                            @endif
+                                        @endif
                                     </a>
 
                                     <ul class="dropdown-menu border-0 p-2" aria-labelledby="dropdownMenuLink">

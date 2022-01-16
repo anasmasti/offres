@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="p-5">
-<h1 class="mb-5">
+    <h1 class="fw-bold mb-5">
         Modifier l'offre <span class="text-primary">{{$offre->title}}</span> 
     </h1>
     <form action="/offres/edit/{{$offre->id}}" method="post">

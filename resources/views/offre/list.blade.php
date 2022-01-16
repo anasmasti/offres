@@ -4,11 +4,11 @@
 <div class="p-5">
 
 <div class="mb-5">
-    <h1>
+    <h1 class="fw-bold">
         Liste des offres
     </h1>
 
-    <a class="btn btn-sm btn-dark rounded-pill" href="/offre/add">Un nouveau offre</a>
+    <a class="btn btn-sm btn-dark rounded-pill" href="/offre/add">Une nouvelle offre</a>
     </div>
 
     <table class="table">

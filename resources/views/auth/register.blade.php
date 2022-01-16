@@ -4,15 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+            <div class="card border-0 p-3" style="box-shadow: -3px 10px 20px 0px rgb(0 0 0 / 7%);border-radius:23px;">
+                <div class="card-header bg-white display-4 border-0 fw-bold">{{ __("S'inscrire") }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div>
-            <label class="form-label">Nom</label>
             <input class="form-control" type="text" name="name" placeholder="Nom" >
             @if ($errors->has('name'))
             <span role="alert" class="text-danger">
@@ -22,7 +21,6 @@
         </div>
 
         <div class="my-3">
-            <label class="form-label">Prénom</label>
             <input class="form-control" type="text" name="prenom" placeholder="Prénom" >
             @if ($errors->has('prenom'))
             <span role="alert" class="text-danger">
@@ -32,7 +30,6 @@
         </div>
 
         <div class="my-3">
-            <label class="form-label">Email</label>
             <input class="form-control" type="email" name="email" placeholder="Email" >
             @if ($errors->has('email'))
             <span role="alert" class="text-danger">
@@ -42,7 +39,6 @@
         </div>
 
         <div class="my-3">
-            <label class="form-label">Mot de passe</label>
             <input class="form-control" type="password" name="password" placeholder="Mot de passe" >
             @if ($errors->has('password'))
             <span role="alert" class="text-danger">
@@ -52,7 +48,6 @@
         </div>
 
         <div>
-            <label class="form-label">Téléphone</label>
             <input class="form-control" type="text" name="tel" placeholder="Téléphone" >
             @if ($errors->has('tel'))
             <span role="alert" class="text-danger">
@@ -61,8 +56,8 @@
             @endif
         </div>
 
-        <div>
-            <label class="form-label">CV</label>
+        <div class="mt-3">
+            <label class="form-label"><strong>Curriculum vitae</strong></label>
             <input class="form-control" type="file" name="cv">
             @if ($errors->has('cv'))
             <span role="alert" class="text-danger">
@@ -73,10 +68,10 @@
 
                        
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                        <div class="row mb-0 mt-4">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary rounded-pill">
+                                    {{ __("S'inscrire maintenant") }}
                                 </button>
                             </div>
                         </div>
