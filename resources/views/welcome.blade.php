@@ -3,17 +3,32 @@
 @section('content')
       @if (Auth::user() == null || Auth::user()->type == "user")
             <div class="container-fluid py-5 px-4" >
+                  @if ($message = Session::get('message'))
+                        <p class="alert alert-success mb-3">
+                        {{ $message }}
+                        </p>
+                  @endif
                   <h1 class="display-5 fw-bold mb-4">Offres d'emploi</h1>
                   <div class="col-12 row">
                         @foreach ($offres as $offre)
+                        
                               <div class="card bg-white border-0 text-white col-4" >
-                                    <img src="{{ $offre->image_url }}" style="filter: brightness(70%); height: 12rem" class="card-img">
+                                    <a href="/offres/{{ $offre->id }}" class="text-white">
+                                    <img src="{{ $offre->image_url }}" style="filter: brightness(65%); height: 12rem" class="card-img">
                                     <div class="card-img-overlay p-4">
+                                    <span class="badge bg-primary mb-2">{{date('d-m-Y', strtotime($offre->updated_at)) }}</span>
+                                    @if ( $offre->etat == true )
+                                    <span class="badge bg-success mb-2">En cours</span>
+                                    @endif
+                                    @if ( $offre->etat == false )
+                                    <span class="badge bg-danger mb-2">Expiré</span>
+                                    @endif
                                           <h3 class="card-title fw-bold">{{ $offre->title }}</h3>
                                           <p class="card-text mb-5">{!! $offre->desc !!}</p>
-                                          <p class="card-text">{{date('d-m-Y', strtotime($offre->updated_at)) }}</p>
                                     </div>
+                              </a>
                               </div>
+                        
                         @endforeach
                   </div>
             </div>

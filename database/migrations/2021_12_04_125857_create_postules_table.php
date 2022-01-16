@@ -14,11 +14,11 @@ class CreatePostulesTable extends Migration
     public function up()
     {
         Schema::create('postules', function (Blueprint $table) {
-            $table->id();
+            $table->id()->increments();;
             $table->unsignedBigInteger('idemp');
             $table->unsignedBigInteger('idoffre');
             $table->date('date');
-            $table->foreign('idemp')->references('id')->on('employees');
+            $table->foreign('idemp')->references('id')->on('users');
             $table->foreign('idoffre')->references('id')->on('offres');
             $table->timestamps();
         });

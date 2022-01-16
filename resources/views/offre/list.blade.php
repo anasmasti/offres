@@ -7,8 +7,9 @@
     <h1 class="fw-bold">
         Liste des offres
     </h1>
-
-    <a class="btn btn-sm btn-dark rounded-pill" href="/offre/add">Une nouvelle offre</a>
+    @if (Auth::user() != null && Auth::user()->type == "admin")
+        <a class="btn btn-sm btn-dark rounded-pill" href="/offre/add">Une nouvelle offre</a>
+    @endif
     </div>
 
     <table class="table">
@@ -28,15 +29,17 @@
                     <td>{{ $offre->title }}</td>
                     <td>{!! $offre->desc !!}</td>
                     <td class="btn-group" role="group">
-                        <a class="btn btn-sm btn-light rounded-pill" href="/offres/{{ $offre->id }}">Detail</a>
-                        <a class="btn btn-sm btn-dark mx-2 rounded-pill" href="/offres/edit/{{ $offre->id }}">Modifier</a>
-                        <form action="/offres/delete/{{ $offre->id }}" method="post">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button class="btn btn-sm btn-danger rounded-pill" type="submit">
-                                Supprimer
-                            </button>
-                        </form>
+                        <a class="btn btn-sm btn-light rounded-pill" href="/offres/{{ $offre->id }}">Voir</a>
+                        @if (Auth::user() != null && Auth::user()->type == "admin")
+                            <a class="btn btn-sm btn-dark mx-2 rounded-pill" href="/offres/edit/{{ $offre->id }}">Modifier</a>
+                            <form action="/offres/delete/{{ $offre->id }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button class="btn btn-sm btn-danger rounded-pill" type="submit">
+                                    Supprimer
+                                </button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="p-5">
+    @if (Auth::user() != null && Auth::user()->type == "admin")
+        <a class="btn btn-sm btn-dark rounded-pill" href="/offres/edit/{{ $offre->id }}">Modifier cette offre</a>
+    @endif
     <span class="badge bg-primary mb-2">{{date('d-m-Y', strtotime($offre->updated_at)) }}</span>
    @if ( $offre->etat == true )
     <span class="badge bg-success mb-2">En cours</span>
@@ -18,5 +21,8 @@
     <div>
     {!! $offre->desc !!}
     </div>
+    @if (Auth::user() == null || Auth::user()->type == "user")
+        <a class="btn btn-primary rounded-pill mt-5" href="/postules/postuler/{{$offre->id}}">Postuler à cette offre</a>
+    @endif
 </div>    
 @endsection
