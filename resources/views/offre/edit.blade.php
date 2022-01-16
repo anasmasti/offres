@@ -29,8 +29,8 @@
 
         <div class="mt-3">
             <label class="form-label"><strong>Etat :</strong>&nbsp;&nbsp;&nbsp;</label>
-            Expirer <input class="form-check-input" type="radio" name="etat" id="etat" value="{{$offre->etat}}">&nbsp;
-            En cour <input class="form-check-input" type="radio" name="etat" id="etat" value="{{$offre->etat}}" checked>
+            Expirer <input class="form-check-input" type="radio" name="etat" id="etat" value="0">&nbsp;
+            En cour <input class="form-check-input" type="radio" name="etat" id="etat" value="1">
         </div>
 
         <div class="mt-2">
