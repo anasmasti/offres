@@ -8,10 +8,9 @@
         </h1>
     </div>
 
-    <table class="table">
+    <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Date de postulation</th>
                     <th>Nom employé</th>
                     <th>Prénom employé</th>
@@ -23,18 +22,17 @@
                 {{-- DISPLAY DATA --}}
                 @foreach ($postules as $p)
                 <tr>
-                    <td>{{ $p->id }}</td>
                     <td>{{ $p->date }}</td>
-                    <td>{{ $p->nom }}</td>
+                    <td>{{ $p->name }}</td>
                     <td>{{ $p->prenom }}</td>
                     <td>{{ $p->title }}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{-- <nav>
-            {{ $ventes->links() }}
-        </nav> --}}
+        <nav>
+            {{ $postules->links() }}
+        </nav> 
         @if ($message = Session::get('message'))
             <p class="alert alert-success">
                 {{ $message }}

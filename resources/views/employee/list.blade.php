@@ -7,7 +7,7 @@
     </h1>
 
 
-    <table class="table">
+    <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>ID</th>

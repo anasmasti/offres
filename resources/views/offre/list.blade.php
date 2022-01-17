@@ -12,7 +12,7 @@
     @endif
     </div>
 
-    <table class="table">
+    <table class="table table-borderless">
             <thead>
                 <tr>
                     <th>ID</th>

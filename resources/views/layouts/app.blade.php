@@ -96,13 +96,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __("S'identifier") }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __("S'inscrire") }}</a>
                                 </li>
                             @endif
                         @else
@@ -118,8 +118,13 @@
                                     </a>
 
                                     <ul class="dropdown-menu border-0 p-2" aria-labelledby="dropdownMenuLink">
+                                    @if ( Auth::user() && Auth::user()->type == 'admin')
+                                    <li><a class="btn btn-sm btn-white mb-3" href="/employees">Employé(e)s</a></li>
+                                    @endif
+                                @if ( Auth::user() && Auth::user()->type == 'user')
                                         <li><a class="btn btn-sm btn-white" href="#">Profile</a></li>
-                                        <li><a class="btn btn-sm btn-white my-2" href="#">Postulations</a></li>
+                                        <li><a class="btn btn-sm btn-white my-2" href="/postules">Postulations</a></li>
+                                  @endif
                                         <li>
                                             <a class="btn btn-sm btn-danger rounded-pill" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

@@ -31,12 +31,25 @@ class PostulesController extends Controller
 
     public function list()
     {
+       if (Auth::user() && Auth::user()->type == 'admin') {
         $postules = DB::table('postules')
             ->join('offres', 'postules.idoffre', '=', 'offres.id')
-            ->join('employees', 'postules.idemp', '=', 'employees.id')
-            ->select('postules.*', 'offres.*', 'employees.*')
-            ->get();
+            ->join('users', 'postules.idemp', '=', 'users.id')
+            ->select('postules.*', 'offres.*', 'users.*')
+            ->paginate(3);
 
         return view('postules.list', ['postules'=>$postules]);
+    }
+
+    if (Auth::user() && Auth::user()->type == 'user') {
+        $postules = DB::table('postules')
+            ->join('offres', 'postules.idoffre', '=', 'offres.id')
+            ->join('users', 'postules.idemp', '=', 'users.id')
+            ->select('postules.*', 'offres.*', 'users.*')
+            ->where('users.id', Auth::user()->id)
+            ->paginate(3);
+
+        return view('postules.list', ['postules'=>$postules]);
+    }
     }
 }
