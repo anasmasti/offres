@@ -4,9 +4,10 @@
       @if (Auth::user() == null || Auth::user()->type == "user")
             <div class="container-fluid py-5 px-4" >
                   @if ($message = Session::get('message'))
-                        <p class="alert alert-success mb-3">
-                        {{ $message }}
-                        </p>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>C'est fait!</strong> {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
                   @endif
                   <h1 class="display-5 fw-bold mb-4">Offres d'emploi</h1>
                   <div class="col-12 row">

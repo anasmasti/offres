@@ -48,3 +48,6 @@ Auth::routes();
 Route::get('/postules/postuler/{offreId}',[App\Http\Controllers\PostulesController::class,'postuler'])->name('postule.form');
 Route::post('/postules/postuler/{offreId}',[App\Http\Controllers\PostulesController::class,'postuler'])->name('postule.form');
 Route::get('/postules',[App\Http\Controllers\PostulesController::class,'list'])->name('postule.list');
+
+Route::get('/users/{user}',  [App\Http\Controllers\UserController::class,'update'])->name('users.update');
+Route::post('/users/{user}',  [App\Http\Controllers\UserController::class,'update'])->name('users.update');

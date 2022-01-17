@@ -27,8 +27,7 @@
                     <td>{{ $employee->prenom }}</td>
                     <td>{{ $employee->tel }}</td>
                     <td class="btn-group" role="group">
-                        <a class="btn btn-sm btn-light rounded-pill" href="/employees/{{ $employee->id }}">Detail</a>
-                        <a class="btn btn-sm btn-dark rounded-pill mx-2" href="/employees/edit/{{ $employee->id }}">Modifier</a>
+                        <a class="btn btn-sm btn-light rounded-pill me-2" href="/employees/{{ $employee->id }}">Detail</a>
                         <form action="/employees/delete/{{ $employee->id }}" method="post">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
@@ -45,9 +44,10 @@
             {{ $employees->links() }}
         </nav>
         @if ($message = Session::get('message'))
-            <p class="alert alert-success">
-                {{ $message }}
-            </p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>C'est fait!</strong> {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 </div>        
 @endsection

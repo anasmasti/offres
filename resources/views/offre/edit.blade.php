@@ -29,13 +29,13 @@
 
         <div class="mt-3">
             <label class="form-label"><strong>Etat :</strong>&nbsp;&nbsp;&nbsp;</label>
-            Expirer <input class="form-check-input" type="radio" name="etat" id="etat" value="0">&nbsp;
-            En cour <input class="form-check-input" type="radio" name="etat" id="etat" value="1">
+            Expirer <input class="form-check-input" type="radio" name="etat" id="etat" value="0" {{ ($offre->etat=="0")? "checked" : "" }}>&nbsp;
+            En cour <input class="form-check-input" type="radio" name="etat" id="etat" value="1"{{ ($offre->etat=="1")? "checked" : "" }}>
         </div>
 
         <div class="mt-2">
             <label class="form-label">Description</label>
-            <textarea class="form-control" name="desc" id="summernote" cols="30" rows="10" value="{!! $offre->desc !!}" ></textarea>
+            <textarea class="form-control" name="desc" id="summernote" cols="30" rows="10"  ></textarea>
         </div>
 
         <div class="mt-5">
@@ -47,6 +47,7 @@
         $(document).ready(function() {
             $('#summernote').summernote();
         });
+        
       </script>
 </div>
 @endsection

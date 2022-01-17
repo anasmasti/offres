@@ -22,7 +22,12 @@
     {!! $offre->desc !!}
     </div>
     @if (Auth::user() == null || Auth::user()->type == "user")
+    @if ($offre->etat == true )
         <a class="btn btn-primary rounded-pill mt-5" href="/postules/postuler/{{$offre->id}}">Postuler à cette offre</a>
+    @endif
+    @if ($offre->etat == false )
+        <button class="btn btn-primary rounded-pill mt-5" href="#" disabled>Postuler à cette offre (Expiré)</button>
+    @endif
     @endif
 </div>    
 @endsection

@@ -15,7 +15,7 @@
     <table class="table table-borderless">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>État</th>
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Actions</th>
@@ -25,7 +25,14 @@
             <tbody class="w-100">
                 @foreach ($offres as $offre)
                 <tr>
-                    <td>{{ $offre->id }}</td>
+                    <td>
+                    @if ( $offre->etat == true )
+                    <span class="badge bg-success mb-2">En cours</span>
+                    @endif
+                    @if ( $offre->etat == false )
+                    <span class="badge bg-danger mb-2">Expiré</span>
+                    @endif
+                    </td>
                     <td>{{ $offre->title }}</td>
                     <td>{!! $offre->desc !!}</td>
                     <td class="btn-group" role="group">
@@ -49,9 +56,10 @@
             {{ $offres->links() }}
         </nav>
         @if ($message = Session::get('message'))
-            <p class="alert alert-success">
-                {{ $message }}
-            </p>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>C'est fait!</strong> {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
 </div>        
 @endsection

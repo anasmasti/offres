@@ -122,7 +122,7 @@
                                     <li><a class="btn btn-sm btn-white mb-3" href="/employees">Employé(e)s</a></li>
                                     @endif
                                 @if ( Auth::user() && Auth::user()->type == 'user')
-                                        <li><a class="btn btn-sm btn-white" href="#">Profile</a></li>
+                                        <li><a class="btn btn-sm btn-white" href="/users/{{Auth::user()->id}}">Profile</a></li>
                                         <li><a class="btn btn-sm btn-white my-2" href="/postules">Postulations</a></li>
                                   @endif
                                         <li>
