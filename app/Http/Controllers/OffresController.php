@@ -81,4 +81,10 @@ class OffresController extends Controller
             return redirect('/login');
         }
     }
+
+    public function afficherSitemap()
+    {
+        $offres = Offre::latest()->get();
+        return view('sitemaps.sitemap1', ['offres'=>$offres]);
+    }
 }

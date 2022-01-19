@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Redirect;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -53,5 +54,18 @@ class UserController extends Controller
         } else {
             return redirect('/login');
         }
+    }
+
+    public function destroy($idemp)
+    {
+        if (Auth::user()) {
+            $employee = User::findOrFail($idemp);
+            $employee -> delete();
+            Session::flush();
+            Auth::logout();
+            return redirect('/')->with('message', 'Votre compte est supprimé');
+        } else {
+            return redirect('/login');
+        }    
     }
 }

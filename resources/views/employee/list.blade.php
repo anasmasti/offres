@@ -14,6 +14,7 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Téléphone</th>
+                    <th>CV</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,6 +27,11 @@
                     <td>{{ $employee->name }}</td>
                     <td>{{ $employee->prenom }}</td>
                     <td>{{ $employee->tel }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary rounded-pill" href="/{{ $employee->cv }}" download>
+                        Télécharger le CV
+                        </a>
+                    </td>
                     <td class="btn-group" role="group">
                         <a class="btn btn-sm btn-light rounded-pill me-2" href="/employees/{{ $employee->id }}">Detail</a>
                         <form action="/employees/delete/{{ $employee->id }}" method="post">

@@ -11,10 +11,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <h1 class="fw-bold mb-5">
-            Mon profile
-        </h1>
-
+        <div class="mb-5">
+             <h1 class="fw-bold">
+                Mon profile
+            </h1>
+            <form action="/users/{{ $user->id }}" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button class="btn btn-sm btn-danger rounded-pill" type="submit">
+                    Supprimer mon compte
+                </button>
+            </form>
+        </div>
    
         <div>
         <input class="form-control" type="text" name="name" value="{{ $user->name }}"  placeholder="Nom" >
@@ -73,6 +81,9 @@
 
 
         <button type="submit" class="btn btn-primary rounded-pill mt-5">Modifier mes information</button>
+       
     </form>
+   
+    
 </div>
 @endsection

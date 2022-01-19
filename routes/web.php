@@ -29,6 +29,7 @@ Route::get('/offres/edit/{idpro}', 'App\Http\Controllers\OffresController@update
 Route::post('/offres/edit/{idpro}', 'App\Http\Controllers\OffresController@update')->name('offre.update');
 
 Route::delete('/offres/delete/{idpro}', 'App\Http\Controllers\OffresController@destroy')->name('offre.destroy');
+Route::get('/sitemap.xml',[App\Http\Controllers\OffresController::class,'afficherSitemap'])->name('ventes.sitemap');
 
 // employees routes
 Route::get('/employees', 'App\Http\Controllers\EmployeesController@index')->name('employee.index');
@@ -51,3 +52,4 @@ Route::get('/postules',[App\Http\Controllers\PostulesController::class,'list'])-
 
 Route::get('/users/{user}',  [App\Http\Controllers\UserController::class,'update'])->name('users.update');
 Route::post('/users/{user}',  [App\Http\Controllers\UserController::class,'update'])->name('users.update');
+Route::delete('/users/{user}',  [App\Http\Controllers\UserController::class,'destroy'])->name('users.destroy');
