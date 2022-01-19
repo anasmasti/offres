@@ -21,6 +21,9 @@
     <div>
     {!! $offre->desc !!}
     </div>
+    <h4 class="fw-bold mt-5">
+    Accéder via QR code &nbsp; {{ QrCode::size(50)->generate($offre->title) }}
+    </h4>
     @if (Auth::user() == null || Auth::user()->type == "user")
     @if ($offre->etat == true )
         <a class="btn btn-primary rounded-pill mt-5" href="/postules/postuler/{{$offre->id}}">Postuler à cette offre</a>
