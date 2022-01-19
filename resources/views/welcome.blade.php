@@ -59,17 +59,33 @@
                                     </div>
                               </div>
                         </div>
-
-                        <h1 class="fw-bold mb-4 mt-5">Statistique</h1>
+                        <div class="my-4">
+                              <h4 class="fw-bold mb-4 mt-5">Statistiques</h4>
+                              <div class="row">
+                                    <div class="col-4">
+                                          <canvas id="pie-chart1"></canvas>
+                                    </div>
+                                    <div class="col-4">
+                                          <canvas id="pie-chart2"></canvas>
+                                    </div>
+                                    <div class="col-4">
+                                          <canvas id="pie-chart3"></canvas>
+                                    </div>
+                              </div>
+                        </div>
+                        <h4 class="fw-bold mb-4 mt-5">liens rapides</h4>
                         <div class="row">
-                              <div class="col-4">
-                                    <canvas id="pie-chart1"></canvas>
+                              <div class="col-2">
+                                   <a class="btn btn-primary rounded-pill" href="/employees">Voir la liste des employé(e)s</a>
                               </div>
-                              <div class="col-4">
-                                    <canvas id="pie-chart2"></canvas>
+                              <div class="col-2">
+                                    <a class="btn btn-primary rounded-pill" href="/postules">Voir la liste des postulations</a>     
                               </div>
-                              <div class="col-4">
-                                    <canvas id="pie-chart3"></canvas>
+                              <div class="col-2">
+                                    <a class="btn btn-primary rounded-pill" href="/offres">Voir la liste des offres insérées</a>    
+                              </div>
+                              <div class="col-2">
+                                    <a class="btn btn-primary rounded-pill" href="/offre/add">Ajouter une nouvelle offre</a>    
                               </div>
                         </div>
                   </div>
